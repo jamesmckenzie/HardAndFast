@@ -1,9 +1,6 @@
 UserMeasurements = new Meteor.Collection("userMeasurements");
 
 if (Meteor.isClient) {
-	Template.hello.greeting = function () {
-		return "Welcome to Patient.";
-	};
 
 	Template.measurements.users = function () {
 		return Users.find({}, {sort: {lastName: 1}});
