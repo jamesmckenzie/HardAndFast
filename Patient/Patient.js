@@ -1,11 +1,5 @@
 
 UserMeasurements = new Meteor.Collection("userMeasurements");
-Users = new Meteor.Collection("users");
-
-Users.remove({});
-Users.insert({firstName: "Bob", lastName: "Watercress"});
-Users.insert({firstName: "Ryan", lastName: "Chipmunk"});
-Users.insert({firstName: "Rachel", lastName: "Rubens"});
 
 
 if (Meteor.isClient) {

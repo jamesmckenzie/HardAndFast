@@ -3,6 +3,7 @@
 </head>
 
 <body>
+  {{> loginButtons}} 
   {{> hello}}
   {{> measurements}}
 </body>
@@ -17,10 +18,4 @@
  		<p>{{name}}</p> 
 		<input value={{value}} />  <input type="button" value="Update" />
 	{{/each}}
-
-  <h1>Users</h1>
-	{{#each users}}
- 		<p>{{firstName}} {{lastName}}</p> 
-	{{/each}}
-
 </template>
