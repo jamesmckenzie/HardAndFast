@@ -4,14 +4,14 @@
 
 <body>
   {{> loginButtons}} 
-  {{> hello}}
-  {{> measurements}}
-</body>
 
-<template name="hello">
   <h1>Patient</h1>
-  {{greeting}}
-</template>
+
+  {{#if currentUser}}
+        Welcome, please add your measurements
+   	{{> measurements}}
+  {{/if}}
+</body>
 
 <template name="measurements">
 	<form class="submit-measurements">
