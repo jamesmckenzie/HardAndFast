@@ -14,8 +14,32 @@
 </template>
 
 <template name="measurements">
-	{{#each types}}
- 		<p>{{name}}</p> 
-		<input value={{value}} />  <input type="button" value="Update" />
-	{{/each}}
+	<form class="submit-measurements">
+		{{#each fields}}
+			<p>{{label}}</p> 
+			<input name="{{name}}" value={{value}} />
+		{{/each}}
+		<br><br>
+		<input type="submit" value="Submit Measurements" />
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Blood Pressure</th>
+				<th>Heart Rate</th>
+				<th>Weight</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each measurements}}
+				<tr>
+					<td>{{date}}</td>
+					<td>{{bloodPressure}}</td>
+					<td>{{heartRate}}</td>
+					<td>{{weight}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
 </template>

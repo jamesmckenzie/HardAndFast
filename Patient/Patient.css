@@ -1,1 +1,11 @@
-/* CSS declarations go here */
+table {
+	border-collapse: collapse;
+}
+table td ,table th {
+	padding: 5px;
+	border: 1px solid black;
+}
+
+form {
+	margin-bottom: 20px;
+}
