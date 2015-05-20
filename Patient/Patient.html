@@ -11,6 +11,7 @@
   		{{> tempUserID}}
 	    <p>Welcome, please add your measurements</p>
 	   	{{> measurements}}
+		{{> chat}}		
   {{/if}}
 </body>
 
@@ -27,7 +28,7 @@
 		<br><br>
 		<input type="submit" value="Submit Measurements" />
 	</form>
-	<table>
+	<table class="measurements">
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -47,4 +48,14 @@
 			{{/each}}
 		</tbody>
 	</table>
+</template>
+
+<template name="chat">
+	<div class="chat-panel">
+		<div class="chat-messages"></div>
+		<form class="chat-controls">
+			<input class="chat-message" type="text" name="message" />
+			<input class="chat-send-message" type="submit" value="Send!" />
+		</form>
+	</div>
 </template>
