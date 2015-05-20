@@ -8,10 +8,15 @@
   <h1>Patient</h1>
 
   {{#if currentUser}}
-        Welcome, please add your measurements
-   	{{> measurements}}
+  		{{> tempUserID}}
+	    <p>Welcome, please add your measurements</p>
+	   	{{> measurements}}
   {{/if}}
 </body>
+
+<template name="tempUserID">
+		Give this ID to your doc yo - {{tempUserID}}
+</template>
 
 <template name="measurements">
 	<form class="submit-measurements">

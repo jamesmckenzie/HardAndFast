@@ -2,9 +2,9 @@ UserMeasurements = new Meteor.Collection("userMeasurements");
 
 if (Meteor.isClient) {
 
-	Template.measurements.users = function () {
-		return Users.find({}, {sort: {lastName: 1}});
-	};
+	Template.tempUserID.helpers({
+		tempUserID : Meteor.userId()
+	});
 
 	Template.measurements.helpers({
 		fields: [
@@ -35,13 +35,6 @@ if (Meteor.isClient) {
 		}
 	});
 
-	Template.hello.events({
-		'click input' : function () {
-		// template data, if any, is available in 'this'
-		if (typeof console !== 'undefined')
-			console.log("You pressed the button");
-		}
-	});
 }
 
 if (Meteor.isServer) {
