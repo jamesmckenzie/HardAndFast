@@ -34,7 +34,10 @@ if (Meteor.isClient) {
 			return false;
 		}
 	});
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 }
 
 if (Meteor.isServer) {
