@@ -1,17 +1,28 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
+    Template.body.events({
+        "submit .new-patient": function (event) {
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+        var patientID = event.target.patientID.value;
+
+        if (Meteor.users.findOne({_id: patientID})) {
+            DoctorsPatients.insert({
+              patientID: patientID,
+              createdAt: new Date() 
+            });
+        } else {
+          throw new Meteor.Error(403, "patient ID" + patientID + " does not exist!");
+        }
+
+        event.target.patientID.value = "";
+
+        return false;
+      }
+    });
+
+  Template.tempAllUsers.helpers({   
+    allUsers: function () {
+      return Meteor.users.find({}, {sort: {_id: -1}});
     }
   });
 }
