@@ -17,8 +17,9 @@ table td ,table th {
 	border: 1px solid black;
 }
 .chat-panel .chat-messages {
-	height: 90%;
+	height: 260px;
 	border-bottom: 1px solid black;
+	overflow-y: scroll;
 }
 .chat-panel .chat-controls {
 	padding: 4px;

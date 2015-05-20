@@ -52,7 +52,11 @@
 
 <template name="chat">
 	<div class="chat-panel">
-		<div class="chat-messages"></div>
+		<div class="chat-messages">
+			{{#each messages}}
+				<p>{{text}}</p>
+			{{/each}}
+		</div>
 		<form class="chat-controls">
 			<input class="chat-message" type="text" name="message" />
 			<input class="chat-send-message" type="submit" value="Send!" />
