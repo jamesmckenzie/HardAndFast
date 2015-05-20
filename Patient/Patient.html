@@ -3,14 +3,14 @@
 </head>
 
 <body>
-  {{> loginButtons}} 
+	{{> loginButtons}} 
 
-  <h1>Patient</h1>
+	<h1>Patient</h1>
 
-  {{#if currentUser}}
-        Welcome, please add your measurements
-   	{{> measurements}}
-  {{/if}}
+	{{#if currentUser}}
+		Welcome, please add your measurements
+		{{> measurements}}
+	{{/if}}
 </body>
 
 <template name="measurements">
