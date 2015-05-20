@@ -14,13 +14,14 @@ if (Meteor.isClient) {
 		],
 		
 		measurements: function () {
-			return UserMeasurements.find({}, {sort: {date: -1}});
+			return UserMeasurements.find({userId: Meteor.userId()}, {sort: {date: -1}});
 		}
 	});
 	
 	Template.measurements.events({
 		'submit .submit-measurements': function(event) {
 			UserMeasurements.insert({
+				userId: Meteor.userId(),
 				date: new Date(),
 				bloodPressure: event.target.bloodPressure.value,
 				heartRate: event.target.heartRate.value,
