@@ -3,16 +3,31 @@
 </head>
 
 <body>
+	{{> tempBody}}
+</body>
+
+<template name="tempBody">
 	{{> loginButtons}} 
 
-	<h1>Patient</h1>
+	{{#unless currentUser}}
+		<input type="checkbox" checked="{{ispatient}}" class="doctorPatientCheck">
+		<label>Patient?</label>
+	{{/unless}}
 
-  {{#if currentUser}}
-  		{{> tempUserID}}
-	    <p>Welcome, please add your measurements</p>
-	   	{{> measurements}}
-  {{/if}}
-</body>
+	{{#if currentUser}}
+		{{#if isPatient}}
+	  		<h1>Patient</h1>
+	  		{{> tempUserID}}
+		    <p>Welcome, please add your measurements</p>
+		   	{{> measurements}}
+		{{/if}}
+	{{/if}}
+</template>
+
+<!-- <template name="doctorPatient">
+		<input type="checkbox" checked="!{{isDoctor}}" name="doctorPatientCheck">
+		<label>Patient?</label>
+</template> -->
 
 <template name="tempUserID">
 		Give this ID to your doc yo - {{tempUserID}}

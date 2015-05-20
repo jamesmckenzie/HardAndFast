@@ -6,6 +6,19 @@ if (Meteor.isClient) {
 		tempUserID : Meteor.userId()
 	});
 
+	Session.set('isPatient', false)
+
+	Template.tempBody.helpers({   
+	    isPatient: function () { return Session.get('isPatient'); }
+	});
+
+	Template.tempBody.events({
+		"click .doctorPatientCheck": function () {
+		   Session.set('isPatient', !Session.get('isPatient'));
+		   console.log(Session.get('isPatient'));
+		},
+	});
+
 	Template.measurements.helpers({
 		fields: [
 			{ name: "bloodPressure", label: "Blood Pressure", value: 0 },
