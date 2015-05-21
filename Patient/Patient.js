@@ -36,8 +36,11 @@ if (Meteor.isClient) {
     });
 
 	Template.tempAllUsers.helpers({   
-	    allUsers: function () {
+	    patientsLinked: function () {
 	      return DoctorsPatients.find({doctorID : Meteor.userId()}, {sort: {_id: -1}});
+	    },
+	    allUsers: function () {
+	      return Meteor.users.find({}, {sort: {_id: -1}});
 	    }
 	});
 	<!-- END DOCTOR SECTION -->
@@ -45,10 +48,14 @@ if (Meteor.isClient) {
 	<!-- PATIENT SECTION -->
 
 	Template.tempUserID.helpers({
-		tempUserID : Meteor.userId()
+		tempUserID : function () { 
+			if (Meteor.userId()) {
+				return Meteor.userId() 
+			}
+		}
 	});
 
-	Session.set('isPatient', false)
+	// Session.set('isPatient', false)
 
 	Template.tempBody.helpers({   
 	    isPatient: function () { return Session.get('isPatient'); }

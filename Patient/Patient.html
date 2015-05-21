@@ -24,7 +24,7 @@
 
 		{{#unless isPatient}}
 	  		<h1>Doctor</h1>
-		    <p>Welcome Dr  {{> tempUserID}}</p>
+		    <p>Welcome Dr </p>
   			{{> drPatients}}
   			{{> tempAllUsers}}
 		{{/unless}}
@@ -49,8 +49,12 @@
 
 <template name="tempAllUsers">
  	<p>My patients</p>
- 	{{#each allUsers}}
+ 	{{#each patientsLinked}}
  		<p>{{patientID}} &nbsp; &nbsp; {{createdAt}}</p> 
+ 	{{/each}}
+ 	 <p>All users</p>
+ 	{{#each allUsers}}
+ 		<p>{{_id}}</p> 
  	{{/each}}
 </template>
 <!-- END DOCTOR SECTION -->
