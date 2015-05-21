@@ -3,18 +3,61 @@
 </head>
 
 <body>
-	{{> loginButtons}} 
-
-	<h1>Patient</h1>
-
-  {{#if currentUser}}
-  		{{> tempUserID}}
-	    <p>Welcome, please add your measurements</p>
-	   	{{> measurements}}
-		{{> chat}}		
-  {{/if}}
+	{{> tempBody}}
 </body>
 
+<template name="tempBody">
+	{{> loginButtons}} 
+
+	{{#unless currentUser}}
+		<input type="checkbox" checked="{{ispatient}}" class="patientCheck">
+		<label>Patient?</label>
+	{{/unless}}
+
+	{{#if currentUser}}
+		{{#if isPatient}}
+	  		<h1>Patient</h1>
+	  		{{> tempUserID}}
+		    <p>Welcome, please add your measurements</p>
+		   	{{> measurements}}
+		{{/if}}
+
+		{{#unless isPatient}}
+	  		<h1>Doctor</h1>
+		    <p>Welcome Dr</p>
+  			{{> drPatients}}
+  			{{> tempAllUsers}}
+		{{/unless}}
+{{/if}}
+
+</template>
+
+<!-- <template name="doctorPatient">
+		<input type="checkbox" checked="!{{isDoctor}}" name="doctorPatientCheck">
+		<label>Patient?</label>
+</template> -->
+
+
+<!-- DOCTOR SECTION -->
+<template name="drPatients">
+	<form class="new-patient">
+    	<input type="text" name="patientID" placeholder="Enter your new patient ID" />
+ 	</form>
+
+ 	<p>My drPatients</p>
+ 	{{DoctorsPatients}}
+</template>
+
+<template name="tempAllUsers">
+ 	<p>All users</p>
+ 	{{#each allUsers}}
+ 		<p>{{_id}}</p> 
+ 		<p>t</p> 
+ 	{{/each}}
+</template>
+<!-- END DOCTOR SECTION -->
+
+<!-- PATIENT SECTION -->
 <template name="tempUserID">
 		Give this ID to your doc yo - {{tempUserID}}
 </template>
