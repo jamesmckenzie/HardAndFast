@@ -67,9 +67,6 @@ if (Meteor.isClient) {
 			else
 			{
 				var selectedPatient = Session.get('selectedPatient');
-				console.log( UserMeasurements.find({}));
-				console.log(selectedPatient);
-				console.log( UserMeasurements.find({userId: selectedPatient}, {sort: {date: -1}}));
 				return UserMeasurements.find({userId: selectedPatient}, {sort: {date: -1}});
 			}
 	    }
