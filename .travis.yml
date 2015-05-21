@@ -5,12 +5,11 @@ node_js:
 
 before_install:
   - npm install -g npm@latest
-  - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-meteor-packages/master/configure.sh | /bin/sh"
-
-install:  
-  - npm install -g mup
-  
+  - curl https://install.meteor.com | /bin/sh
+  - npm install -g mup 
+    
 script:  
+  - echo "Hello World"
   
 after_success:
   - cd patient

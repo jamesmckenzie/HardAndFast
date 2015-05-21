@@ -19,13 +19,11 @@
 	  		<h1>Patient</h1>
 	  		{{> tempUserID}}
 			{{> doctor}}
-		    <p>Welcome, please add your measurements</p>
 		   	{{> measurements}}
 		{{/if}}
 
 		{{#unless isPatient}}
 	  		<h1>Doctor</h1>
-		    <p>Welcome Dr </p>
   			{{> drPatients}}
   			{{> tempAllUsers}}
 		{{/unless}}		
@@ -40,7 +38,10 @@
 
 
 <!-- DOCTOR SECTION -->
+
 <template name="drPatients">
+	<p>Welcome Dr {{loggedInDoctor}}</p>
+
 	<form class="new-patient">
     	<input type="text" name="patientID" placeholder="Enter your new patient ID" />
  	</form>
@@ -51,7 +52,7 @@
 <template name="tempAllUsers">
  	<p>My patients</p>
  	{{#each patientsLinked}}
- 		<p>{{patientID}} &nbsp; &nbsp; {{createdAt}}</p>
+ 		<li class="myPatients {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li> 
 		{{> chat recipient=patientID}}
  	{{/each}}
  	 <p>All users</p>
@@ -64,6 +65,7 @@
 
 <!-- PATIENT SECTION -->
 <template name="tempUserID">
+		<p>Welcome {{loggedInPatient}}, please add your measurements</p>
 		Give this ID to your doc yo - {{tempUserID}}
 </template>
 

@@ -6,6 +6,14 @@ if (Meteor.isClient) {
 
 	<!-- DOCTOR SECTION -->
 
+	Template.drPatients.helpers({
+		loggedInDoctor: function  () { 
+			if (Meteor.user()) {
+				return Meteor.user().profile.name;
+			}
+		}
+	});
+
 	Template.body.events({
 	    "submit .new-patient": function (event) {
 
@@ -41,8 +49,23 @@ if (Meteor.isClient) {
 	    },
 	    allUsers: function () {
 	      return Meteor.users.find({}, {sort: {_id: -1}});
+	    },
+	    selectedClass: function(){
+	      var patientId = this._id;
+	      var selectedPlayer = Session.get('selectedPatient');
+	      if(patientId == selectedPlayer){
+	          return "doctorPatientselected"
+	      }
 	    }
 	});
+
+	Template.tempAllUsers.events({
+	    'click .myPatients': function(){
+	      var patientId = this._id;
+	      Session.set('selectedPatient', patientId);
+	    }
+  	});
+
 	<!-- END DOCTOR SECTION -->
 
 	<!-- PATIENT SECTION -->
@@ -51,6 +74,11 @@ if (Meteor.isClient) {
 		tempUserID : function () { 
 			if (Meteor.userId()) {
 				return Meteor.userId() 
+			}
+		},
+		loggedInPatient: function  () { 
+			if (Meteor.user()) {
+				return Meteor.user().profile.name;
 			}
 		}
 	});
