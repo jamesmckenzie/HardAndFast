@@ -10,8 +10,6 @@ before_install:
     
 script:  
   - echo "Hello World"
-  - cd Patient && meteor --test
   
 after_success:
-  - ls
   - cd Patient && mup deploy
