@@ -27,3 +27,7 @@ table td ,table th {
 .chat-panel .chat-controls .chat-message {
 	width: 80%;
 }
+
+.doctorPatientselected{
+    background-color: yellow;
+}
