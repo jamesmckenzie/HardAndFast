@@ -31,3 +31,7 @@ table td ,table th {
 .doctorPatientselected{
     background-color: yellow;
 }
+
+.hidden{
+    visibility: hidden;
+}

@@ -57,11 +57,32 @@
 			{{> chat recipient=patientID}}
 		{{/if}}
  	{{/each}}
- 	 <p>All users</p>
+ 	<table class="measurements {{hidden}}">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Blood Pressure</th>
+				<th>Heart Rate</th>
+				<th>Weight</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each userMeasurements}}
+				<tr>
+					<td>{{date}}</td>
+					<td>{{bloodPressure}}</td>
+					<td>{{heartRate}}</td>
+					<td>{{weight}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+ 	<p>All users</p>
  	{{#each allUsers}}
  		<p>{{_id}} --- {{profile.name}}</p> 
  	{{/each}}
 </template>
+
 <!-- END DOCTOR SECTION -->
 
 
@@ -107,6 +128,7 @@
 		</tbody>
 	</table>
 </template>
+
 <!-- END PATIENT SECTION -->
 
 <template name="chat">

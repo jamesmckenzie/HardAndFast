@@ -51,17 +51,33 @@ if (Meteor.isClient) {
 	      return Meteor.users.find({}, {sort: {_id: -1}});
 	    },
 	    selectedClass: function(){
-	      var patientId = this._id;
-	      var selectedPlayer = Session.get('selectedPatient');
-	      if(patientId == selectedPlayer){
+	      var patientId = this.patientID;
+	      var selectedPatient = Session.get('selectedPatient');
+	      if(patientId == selectedPatient){
 	          return "doctorPatientselected"
 	      }
+	    },
+	    hidden: function () {
+	      if (Session.get('selectedPatient') == undefined) {return "hidden"};
+	      return "";
+	    },
+	    userMeasurements : function () {
+	    	if (Session.get('selectedPatient') == undefined) 
+	    		return UserMeasurements.find({userId: "fakeID"}, {sort: {date: -1}});
+			else
+			{
+				var selectedPatient = Session.get('selectedPatient');
+				console.log( UserMeasurements.find({}));
+				console.log(selectedPatient);
+				console.log( UserMeasurements.find({userId: selectedPatient}, {sort: {date: -1}}));
+				return UserMeasurements.find({userId: selectedPatient}, {sort: {date: -1}});
+			}
 	    }
 	});
 
 	Template.tempAllUsers.events({
 	    'click .myPatients': function(){
-	      var patientId = this._id;
+	      var patientId = this.patientID;
 	      Session.set('selectedPatient', patientId);
 	    }
   	});
