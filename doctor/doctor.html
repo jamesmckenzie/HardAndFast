@@ -6,9 +6,30 @@
   {{> loginButtons}} 
   
   <h1>Doctor</h1>
-  {{> hello}}
+    {{#if currentUser}}
+  		{{> patients}}
+  		{{> tempAllUsers}}
+  	{{/if}}
 </body>
 
-<template name="hello">
+<template name="patients">
+
+	<form class="new-patient">
+    	<input type="text" name="patientID" placeholder="Enter your new patient ID" />
+ 	</form>
+
+ 	<p>My patients</p>
+ 	{{DoctorsPatients}}
+
+</template>
+
+<template name="tempAllUsers">
+
+ 	<p>All users</p>
+ 	{{#each allUsers}}
+ 		<p>{{_id}}</p> 
+ 		<p>t</p> 
+ 	{{/each}}
+
 
 </template>

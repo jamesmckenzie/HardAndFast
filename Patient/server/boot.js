@@ -32,3 +32,5 @@ if(facebookConfig) {
     configureGoogle(googleConfig);
 
 }
+
+Kadira.connect('7X8QxCLGWxGHYvq2s', 'bb9ff659-a049-48f9-9c33-6f17ad29ae06')

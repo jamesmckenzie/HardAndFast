@@ -20,7 +20,6 @@
 	  		{{> tempUserID}}
 		    <p>Welcome, please add your measurements</p>
 		   	{{> measurements}}
-			{{> chat}}
 		{{/if}}
 
 		{{#unless isPatient}}
@@ -28,9 +27,8 @@
 		    <p>Welcome Dr  {{> tempUserID}}</p>
   			{{> drPatients}}
   			{{> tempAllUsers}}
-			{{> chat}}
 		{{/unless}}
-	{{/if}}
+{{/if}}
 
 </template>
 
@@ -57,6 +55,7 @@
 </template>
 <!-- END DOCTOR SECTION -->
 
+
 <!-- PATIENT SECTION -->
 <template name="tempUserID">
 		Give this ID to your doc yo - {{tempUserID}}
@@ -71,7 +70,7 @@
 		<br><br>
 		<input type="submit" value="Submit Measurements" />
 	</form>
-	<table class="measurements">
+	<table>
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -92,17 +91,4 @@
 		</tbody>
 	</table>
 </template>
-
-<template name="chat">
-	<div class="chat-panel">
-		<div class="chat-messages">
-			{{#each messages}}
-				<p>{{text}}</p>
-			{{/each}}
-		</div>
-		<form class="chat-controls">
-			<input class="chat-message" type="text" name="message" />
-			<input class="chat-send-message" type="submit" value="Send!" />
-		</form>
-	</div>
-</template>
+<!-- END PATIENT SECTION -->
