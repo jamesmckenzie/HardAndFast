@@ -6,7 +6,7 @@ node_js:
 before_install:
   - npm install -g npm@latest
   - curl https://install.meteor.com | /bin/sh
-  - npm install -g mup
+  - npm install -g mup 
     
 script:  
   
