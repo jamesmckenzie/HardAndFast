@@ -1,9 +1,6 @@
 UserMeasurements = new Meteor.Collection("userMeasurements");
-<<<<<<< HEAD
 ChatMessages = new Meteor.Collection("chatMessages");
 DoctorsPatients = new Meteor.Collection("doctorPatients");
-=======
->>>>>>> origin/master
 
 if (Meteor.isClient) {
 
