@@ -10,6 +10,6 @@ before_install:
 install:  
   - npm install -g mup
   
-after_success: 
+after_success:
   - cd patient
   - mup deploy
