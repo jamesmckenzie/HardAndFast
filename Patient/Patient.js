@@ -55,7 +55,11 @@ if (Meteor.isClient) {
 		}
 	});
 
-	// Session.set('isPatient', false)
+	Template.doctor.helpers({
+		doctor: function() {
+			return DoctorsPatients.findOne({patientID: Meteor.userId()});
+		}
+	});
 
 	Template.tempBody.helpers({   
 	    isPatient: function () { return Session.get('isPatient'); }
@@ -101,7 +105,7 @@ if (Meteor.isClient) {
 	
 	Template.chat.helpers({	
 		messages: function () {
-			return ChatMessages.find({fromUserId: Meteor.userId()}, {sort: {date: 1}});
+			return ChatMessages.find({fromUserId: {$in: [Meteor.userId(), this.recipient]}, toUserId: {$in: [Meteor.userId(), this.recipient]}}, {sort: {date: 1}});
 		}
 	});
 	
@@ -114,7 +118,7 @@ if (Meteor.isClient) {
 			ChatMessages.insert({
 				date: new Date(),
 				fromUserId: Meteor.userId(),
-				toUserId: 123,
+				toUserId: this.recipient,
 				text: event.target.message.value
 			});
 			
