@@ -13,4 +13,4 @@ script:
   
 after_success:
   - ls
-  - cd patient && mup deploy
+  - cd Patient && mup deploy
