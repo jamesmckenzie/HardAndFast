@@ -28,7 +28,9 @@
   			{{> drPatients}}
   			{{> tempAllUsers}}
 		{{/unless}}
-{{/if}}
+		
+		{{> chat}}
+	{{/if}}
 
 </template>
 
@@ -74,7 +76,7 @@
 		<br><br>
 		<input type="submit" value="Submit Measurements" />
 	</form>
-	<table>
+	<table class="measurements">
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -96,3 +98,17 @@
 	</table>
 </template>
 <!-- END PATIENT SECTION -->
+
+<template name="chat">
+	<div class="chat-panel">
+		<div class="chat-messages">
+			{{#each messages}}
+				<p>{{text}}</p>
+			{{/each}}
+		</div>
+		<form class="chat-controls">
+			<input class="chat-message" type="text" name="message" />
+			<input class="chat-send-message" type="submit" value="Send!" />
+		</form>
+	</div>
+</template>

@@ -6,6 +6,24 @@ table td ,table th {
 	border: 1px solid black;
 }
 
-form {
+.submit-measurements,
+.measurements {
 	margin-bottom: 20px;
+}
+
+.chat-panel {
+	width: 400px;
+	height: 300px;
+	border: 1px solid black;
+}
+.chat-panel .chat-messages {
+	height: 260px;
+ 	border-bottom: 1px solid black;
+	overflow-y: scroll;
+}
+.chat-panel .chat-controls {
+	padding: 4px;
+}
+.chat-panel .chat-controls .chat-message {
+	width: 80%;
 }

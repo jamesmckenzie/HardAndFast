@@ -98,6 +98,34 @@ if (Meteor.isClient) {
 		}
 	});
 	<!-- END PATIENT SECTION -->
+	
+	Template.chat.helpers({	
+		messages: function () {
+			return ChatMessages.find({fromUserId: Meteor.userId()}, {sort: {date: 1}});
+		}
+	});
+	
+	Template.chat.events({
+		'submit .chat-controls': function(event) {
+			if(!event.target.message.value) {
+				return false;
+			}
+			
+			ChatMessages.insert({
+				date: new Date(),
+				fromUserId: Meteor.userId(),
+				toUserId: 123,
+				text: event.target.message.value
+			});
+			
+			event.target.message.value = '';
+			
+			var messagesPane = document.getElementsByClassName('chat-messages')[0];
+			messagesPane.scrollTop = messagesPane.scrollHeight;
+			
+			return false;
+		}
+	});
 }
 
 if (Meteor.isServer) {
