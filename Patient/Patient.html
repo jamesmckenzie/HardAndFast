@@ -53,7 +53,7 @@
 <template name="tempAllUsers">
  	<p>My patients</p>
  	{{#each patientsLinked}}
- 		<p>{{patientID}} &nbsp; &nbsp; {{createdAt}}</p> 
+ 		<li class="myPatients {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li> 
  	{{/each}}
  	 <p>All users</p>
  	{{#each allUsers}}
