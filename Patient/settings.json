@@ -1,8 +1,11 @@
 {
-  "public": {
-	"kadira": { 
-	  "appId": "7X8QxCLGWxGHYvq2s", 
-	  "appSecret": "bb9ff659-a049-48f9-9c33-6f17ad29ae06" 
-	}
-  } 
+    "facebook" : {
+        "clientId": "1452097835087669",
+        "secret": "945ef0ac024adc88a4e89bc68a27b44d"
+    },
+
+    "google" : {
+        "clientId": "380213472442-n4bkkassq86saq8um0flh428tb273af3.apps.googleusercontent.com",
+        "secret": "ujbv3X3dYt4Oz5RBKcoiiq_i"
+    }
 }
