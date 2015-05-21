@@ -1,12 +1,11 @@
 sudo: required
 language: node_js
 node_js:
-  - "0.8"
   - "0.10"
 
 before_install:
+  - npm install -g npm@latest
   - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-meteor-packages/master/configure.sh | /bin/sh"
-  - npm install npm
 
 install:  
   - npm install -g mup
