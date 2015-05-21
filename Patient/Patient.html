@@ -25,7 +25,7 @@
 
 		{{#unless isPatient}}
 	  		<h1>Doctor</h1>
-		    <p>Welcome Dr</p>
+		    <p>Welcome Dr  {{> tempUserID}}</p>
   			{{> drPatients}}
   			{{> tempAllUsers}}
 			{{> chat}}
@@ -46,15 +46,13 @@
     	<input type="text" name="patientID" placeholder="Enter your new patient ID" />
  	</form>
 
- 	<p>My drPatients</p>
  	{{DoctorsPatients}}
 </template>
 
 <template name="tempAllUsers">
- 	<p>All users</p>
+ 	<p>My patients</p>
  	{{#each allUsers}}
- 		<p>{{_id}}</p> 
- 		<p>t</p> 
+ 		<p>{{patientID}} &nbsp; &nbsp; {{createdAt}}</p> 
  	{{/each}}
 </template>
 <!-- END DOCTOR SECTION -->

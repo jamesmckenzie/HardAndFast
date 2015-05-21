@@ -1,5 +1,6 @@
 UserMeasurements = new Meteor.Collection("userMeasurements");
 ChatMessages = new Meteor.Collection("chatMessages");
+DoctorsPatients = new Meteor.Collection("doctorPatients");
 
 if (Meteor.isClient) {
 
@@ -11,11 +12,19 @@ if (Meteor.isClient) {
 	    var patientID = event.target.patientID.value;
 
         if (Meteor.users.findOne({_id: patientID})) {
-            DoctorsPatients.insert({
-              patientID: patientID,
-              createdAt: new Date() 
-            });
-            console.log("inserted" + patientID);
+        	if (!DoctorsPatients.findOne({doctorID: Meteor.userId(), patientID: patientID}))
+        	{
+	            DoctorsPatients.insert({
+	            	doctorID:  Meteor.userId(),
+	              	patientID: patientID,
+	              	createdAt: new Date()
+	            });
+	            console.log("inserted " + patientID);
+            }
+            else
+            {
+            	console.log("already exists " + patientID)
+            }
         } else {
           throw new Meteor.Error(403, "patient ID" + patientID + " does not exist!");
         }
@@ -28,7 +37,7 @@ if (Meteor.isClient) {
 
 	Template.tempAllUsers.helpers({   
 	    allUsers: function () {
-	      return Meteor.users.find({}, {sort: {_id: -1}});
+	      return DoctorsPatients.find({doctorID : Meteor.userId()}, {sort: {_id: -1}});
 	    }
 	});
 	<!-- END DOCTOR SECTION -->
