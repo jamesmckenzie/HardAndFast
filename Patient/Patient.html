@@ -18,13 +18,11 @@
 		{{#if isPatient}}
 	  		<h1>Patient</h1>
 	  		{{> tempUserID}}
-		    <p>Welcome, please add your measurements</p>
 		   	{{> measurements}}
 		{{/if}}
 
 		{{#unless isPatient}}
 	  		<h1>Doctor</h1>
-		    <p>Welcome Dr </p>
   			{{> drPatients}}
   			{{> tempAllUsers}}
 		{{/unless}}
@@ -41,7 +39,10 @@
 
 
 <!-- DOCTOR SECTION -->
+
 <template name="drPatients">
+	<p>Welcome Dr {{loggedInDoctor}}</p>
+
 	<form class="new-patient">
     	<input type="text" name="patientID" placeholder="Enter your new patient ID" />
  	</form>
@@ -64,6 +65,7 @@
 
 <!-- PATIENT SECTION -->
 <template name="tempUserID">
+		<p>Welcome {{loggedInPatient}}, please add your measurements</p>
 		Give this ID to your doc yo - {{tempUserID}}
 </template>
 

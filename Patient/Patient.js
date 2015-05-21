@@ -6,6 +6,14 @@ if (Meteor.isClient) {
 
 	<!-- DOCTOR SECTION -->
 
+	Template.drPatients.helpers({
+		loggedInDoctor: function  () { 
+			if (Meteor.user()) {
+				return Meteor.user().profile.name;
+			}
+		}
+	});
+
 	Template.body.events({
 	    "submit .new-patient": function (event) {
 
@@ -51,6 +59,11 @@ if (Meteor.isClient) {
 		tempUserID : function () { 
 			if (Meteor.userId()) {
 				return Meteor.userId() 
+			}
+		},
+		loggedInPatient: function  () { 
+			if (Meteor.user()) {
+				return Meteor.user().profile.name;
 			}
 		}
 	});
