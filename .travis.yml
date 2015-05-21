@@ -8,6 +8,9 @@ before_install:
   - curl https://install.meteor.com | /bin/sh
   - npm install -g mup 
     
+script:  
+  - echo "Hello World"
+  
 after_success:
   - cd patient
   - mup deploy
