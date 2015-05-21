@@ -9,7 +9,7 @@ before_install:
   - npm install npm
 
 install:  
-  - npm intall -g mup
+  - npm install -g mup
   
 after_success:
   - cd patient
