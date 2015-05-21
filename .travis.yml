@@ -12,5 +12,4 @@ script:
   - echo "Hello World"
   
 after_success:
-  - cd patient
-  - mup deploy
+  - cd patient && mup deploy
