@@ -20,6 +20,7 @@
 	  		{{> tempUserID}}
 		    <p>Welcome, please add your measurements</p>
 		   	{{> measurements}}
+			{{> chat}}
 		{{/if}}
 
 		{{#unless isPatient}}
@@ -27,8 +28,9 @@
 		    <p>Welcome Dr</p>
   			{{> drPatients}}
   			{{> tempAllUsers}}
+			{{> chat}}
 		{{/unless}}
-{{/if}}
+	{{/if}}
 
 </template>
 
