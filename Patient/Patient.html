@@ -1,9 +1,13 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cosmo/bootstrap.min.css" rel="stylesheet">
   <title>Patient</title>
 </head>
 
 <body>
+	<div class="container-fluid">
 	{{> tempBody}}
+	</div>
 </body>
 
 <template name="tempBody">
@@ -16,16 +20,26 @@
 
 	{{#if currentUser}}
 		{{#if isPatient}}
-	  		<h1>Patient</h1>
-	  		{{> tempUserID}}
-			{{> doctor}}
-		   	{{> measurements}}
+			<div class="col-md-12 text-center margin-bottom-20">
+				<h1>Patient</h1>
+				{{> tempUserID}}
+			</div>
+			<div class="col-md-6">
+				{{> doctor}}
+			</div>
+			<div class="col-md-6">
+				{{> measurements}}
+			</div>
 		{{/if}}
 
 		{{#unless isPatient}}
-	  		<h1>Doctor</h1>
-  			{{> drPatients}}
-  			{{> tempAllUsers}}
+			<div class="col-md-12 text-center margin-bottom-20">
+				<h1>Doctor</h1>
+				{{> drPatients}}
+			</div>
+			<div class="col-md-12">
+				{{> tempAllUsers}}
+			</div>
 		{{/unless}}		
 	{{/if}}
 
@@ -44,37 +58,47 @@
 </template>
 
 <template name="tempAllUsers">
- 	<p>My patients</p>
- 	{{#each patientsLinked}}
- 		<li class="myPatients {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li>
- 	{{/each}}
-	{{#if selectedPatient}}
-		{{> chat recipient=selectedPatient}}
-	{{/if}}
- 	<table class="measurements {{hidden}}">
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Blood Pressure</th>
-				<th>Heart Rate</th>
-				<th>Weight</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each userMeasurements}}
-				<tr>
-					<td>{{date}}</td>
-					<td>{{bloodPressure}}</td>
-					<td>{{heartRate}}</td>
-					<td>{{weight}}</td>
-				</tr>
+	<div class="col-md-6">
+		<h2>My patients</h2>
+		<div class="margin-bottom-20 list-group">
+			{{#each patientsLinked}}
+				<li class="myPatients list-group-item {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li>
 			{{/each}}
-		</tbody>
-	</table>
- 	<p>All users</p>
- 	{{#each allUsers}}
- 		<p>{{_id}} --- {{profile.name}}</p> 
- 	{{/each}}
+		</div>
+		<div class="margin-bottom-20">
+			<h2>All users</h2>
+			{{#each allUsers}}
+				<p>{{_id}} --- {{profile.name}}</p> 
+			{{/each}}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<h2>Measurements</h2>
+	 	<table class="measurements {{hidden}} margin-bottom-20 table">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Blood Pressure</th>
+					<th>Heart Rate</th>
+					<th>Weight</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each userMeasurements}}
+					<tr>
+						<td>{{date}}</td>
+						<td>{{bloodPressure}}</td>
+						<td>{{heartRate}}</td>
+						<td>{{weight}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+		{{#if selectedPatient}}
+			<h2>Chat</h2>
+			{{> chat recipient=selectedPatient}}
+		{{/if}}
+	</div>
 </template>
 
 <!-- END DOCTOR SECTION -->
@@ -87,20 +111,27 @@
 </template>
 
 <template name="doctor">
-	Your doctor is: {{doctor.doctorID}}
+	<h4>Your doctor is: {{doctor.doctorID}}</h4>
+	<h2>Chat</h2>
 	{{> chat recipient=doctor.doctorID}}
 </template>
 
 <template name="measurements">
-	<form class="submit-measurements">
+	<h2>Submit Measurements</h2>
+	<form class="submit-measurements margin-bottom-20">
 		{{#each fields}}
-			<p>{{label}}</p> 
-			<input name="{{name}}" value={{value}} />
+			<div class="form-group"> 
+				<label>{{label}}</label> 
+				<div class="input-group">
+					<input class="form-control" name="{{name}}" value={{value}} />
+					<span class="input-group-addon">{{unit}}</span>
+				</div>
+			</div>
 		{{/each}}
-		<br><br>
-		<input type="submit" value="Submit Measurements" />
+		<input class="btn btn-primary" type="submit" value="Submit Measurements" />
 	</form>
-	<table class="measurements">
+	<h2>Measurement History</h2>
+	<table class="measurements {{hidden}} margin-bottom-20 table">
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -125,15 +156,19 @@
 <!-- END PATIENT SECTION -->
 
 <template name="chat">
-	<div class="chat-panel">
-		<div class="chat-messages">
+	<div class="chat-panel col-md-12 panel panel-default">
+		<div class="chat-messages col-md-12">
 			{{#each messages}}
 				<p>{{fromUserId}}: {{text}}</p>
 			{{/each}}
 		</div>
-		<form class="chat-controls">
-			<input class="chat-message" type="text" name="message" />
-			<input class="chat-send-message" type="submit" value="Send!" />
+		<form class="chat-controls col-md-12 form-group">
+			<div class="input-group">
+				<input class="chat-message form-control" type="text" name="message" />
+				<div class="input-group-btn">
+					<input class="chat-send-message btn btn-primary" type="submit" value="Send!" />
+				</div>
+			</div>
 		</form>
 	</div>
 </template>

@@ -1,35 +1,14 @@
-table {
-	border-collapse: collapse;
-}
-table td ,table th {
-	padding: 5px;
-	border: 1px solid black;
-}
-
-.submit-measurements,
-.measurements {
+.margin-bottom-20 {
 	margin-bottom: 20px;
 }
 
-.chat-panel {
-	width: 400px;
-	height: 300px;
-	border: 1px solid black;
-}
-.chat-panel .chat-messages {
-	height: 260px;
- 	border-bottom: 1px solid black;
-	overflow-y: scroll;
-}
-.chat-panel .chat-controls {
-	padding: 4px;
-}
-.chat-panel .chat-controls .chat-message {
-	width: 80%;
+.measurements {
+	width: 100%;
 }
 
-.doctorPatientselected{
-    background-color: yellow;
+.chat-panel .chat-messages {
+	height: 260px;
+	overflow-y: scroll;
 }
 
 .hidden{
