@@ -55,7 +55,7 @@ if (Meteor.isClient) {
 	      var patientId = this.patientID;
 	      var selectedPatient = Session.get('selectedPatient');
 	      if(patientId == selectedPatient){
-	          return "doctorPatientselected"
+	          return "active"
 	      }
 	    },
 	    hidden: function () {
@@ -119,9 +119,9 @@ if (Meteor.isClient) {
 
 	Template.measurements.helpers({
 		fields: [
-			{ name: "bloodPressure", label: "Blood Pressure", value: 0 },
-			{ name: "heartRate", label: "Heart Rate", value: 0 },
-			{ name: "weight", label: "Weight", value: 0 }
+			{ name: "bloodPressure", label: "Blood Pressure", value: 0, unit: "mmHg"},
+			{ name: "heartRate", label: "Heart Rate", value: 0, unit: "BPM"},
+			{ name: "weight", label: "Weight", value: 0, unit: "Kg" }
 		],
 		
 		measurements: function () {
