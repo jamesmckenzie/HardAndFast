@@ -165,7 +165,7 @@ if (Meteor.isClient) {
 			ChatMessages.insert({
 				date: new Date(),
 				fromUserId: Meteor.userId(),
-				name: Meteor.user.profile.name,
+				name: Meteor.user().profile.name,
 				toUserId: this.recipient,
 				text: event.target.message.value
 			});

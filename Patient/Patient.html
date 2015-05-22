@@ -62,7 +62,7 @@
 		<h2>My patients</h2>
 		<div class="margin-bottom-20 list-group">
 			{{#each patientsLinked}}
-				<li class="myPatients list-group-item {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li>
+				<li class="myPatients list-group-item {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{patientName}}</li>
 			{{/each}}
 		</div>
 		<div class="margin-bottom-20">
@@ -159,7 +159,7 @@
 	<div class="chat-panel col-md-12 panel panel-default">
 		<div class="chat-messages col-md-12">
 			{{#each messages}}
-				<p>{{fromUserId}}: {{text}}</p>
+				<p>{{name}}: {{text}}</p>
 			{{/each}}
 		</div>
 		<form class="chat-controls col-md-12 form-group">
