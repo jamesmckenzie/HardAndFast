@@ -46,7 +46,7 @@
 <template name="tempAllUsers">
  	<p>My patients</p>
  	{{#each patientsLinked}}
- 		<li class="myPatients {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li>
+ 		<li class="myPatients {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{patientName}}</li>
  	{{/each}}
 	{{#if selectedPatient}}
 		{{> chat recipient=selectedPatient}}

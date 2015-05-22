@@ -25,6 +25,7 @@ if (Meteor.isClient) {
 	            DoctorsPatients.insert({
 	            	doctorID:  Meteor.userId(),
 	              	patientID: patientID,
+	              	patientName: Meteor.users.findOne({_id: patientID}).profile.name,
 	              	createdAt: new Date()
 	            });
 	            console.log("inserted " + patientID);
@@ -164,6 +165,7 @@ if (Meteor.isClient) {
 			ChatMessages.insert({
 				date: new Date(),
 				fromUserId: Meteor.userId(),
+				name: Meteor.user.profile.name,
 				toUserId: this.recipient,
 				text: event.target.message.value
 			});
