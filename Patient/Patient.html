@@ -31,12 +31,6 @@
 
 </template>
 
-<!-- <template name="doctorPatient">
-		<input type="checkbox" checked="!{{isDoctor}}" name="doctorPatientCheck">
-		<label>Patient?</label>
-</template> -->
-
-
 <!-- DOCTOR SECTION -->
 
 <template name="drPatients">
@@ -53,10 +47,10 @@
  	<p>My patients</p>
  	{{#each patientsLinked}}
  		<li class="myPatients {{selectedClass}}">{{patientID}} &nbsp; &nbsp; {{createdAt}}</li>
-		{{#if selectedClass}}
-			{{> chat recipient=patientID}}
-		{{/if}}
  	{{/each}}
+	{{#if selectedPatient}}
+		{{> chat recipient=selectedPatient}}
+	{{/if}}
  	<table class="measurements {{hidden}}">
 		<thead>
 			<tr>
@@ -91,7 +85,6 @@
 		<p>Welcome {{loggedInPatient}}, please add your measurements</p>
 		Give this ID to your doc yo - {{tempUserID}}
 </template>
-
 
 <template name="doctor">
 	Your doctor is: {{doctor.doctorID}}

@@ -69,7 +69,10 @@ if (Meteor.isClient) {
 				var selectedPatient = Session.get('selectedPatient');
 				return UserMeasurements.find({userId: selectedPatient}, {sort: {date: -1}});
 			}
-	    }
+	    },
+		selectedPatient: function () {
+			return Session.get('selectedPatient');
+		}
 	});
 
 	Template.tempAllUsers.events({
@@ -146,7 +149,9 @@ if (Meteor.isClient) {
 	
 	Template.chat.helpers({	
 		messages: function () {
-			return ChatMessages.find({fromUserId: {$in: [Meteor.userId(), this.recipient]}, toUserId: {$in: [Meteor.userId(), this.recipient]}}, {sort: {date: 1}});
+			if(this.recipient) {
+				return ChatMessages.find({fromUserId: {$in: [Meteor.userId(), this.recipient]}, toUserId: {$in: [Meteor.userId(), this.recipient]}}, {sort: {date: 1}});
+			}
 		}
 	});
 	
